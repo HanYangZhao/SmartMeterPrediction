@@ -1,7 +1,4 @@
 
-# SmartMeterPrediction
-Tool to predicted home energy usages based on machine learning and smart meter data
-
 # SmartMeterPrediction - HydroQuebec
 Tool to predicted home energy usages based on machine learning and smart meter data
 
