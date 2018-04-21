@@ -1,0 +1,51 @@
+version: '3.3'
+services:
+  predictor:
+    image: predictor_docker
+    container_name: predictor
+    depends_on:
+      - influxdb
+      - hydro
+    environment:
+      - HYDRO_IP=hydro
+      - HYDRO_PORT=5000
+      - INFLUX_IP=influxdb
+      - INFLUX_PORT=8086
+      - INFLUXDB_DB=e
+      - PREDICT_HOURS=168 #NUM of Hours to predict in the future
+      - LON=              #LONGITUDE
+      - LAT=              #LATITUDE
+      - DARKSKY_KEY=      #DARK_SKY_KEY for weather prediction
+      - PYTHONUNBUFFERED=1
+      - TZ=US/Eastern
+      - UPDATE_DELAY=7    #What time after midnight should you update the predcitions
+  hydro:
+    image: hydro_docker
+    container_name: hydro
+    environment:
+      - USERNAME=  # Hydro quebec username
+      - PASSWORD=  # Hydro quebec password
+      - CONTRACT=  # Hydro quebec contract number
+      - TZ=US/Eastern
+    ports:
+      - "5000:5000"
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=e
+      - TZ=US/Eastern
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - TZ=US/Eastern
+  chronograf:
+    image: chronograf
+    container_name: chronograf
+    ports:
+      - "8888:8888"

@@ -1,0 +1,22 @@
+FROM python:3.6.4
+
+RUN pip install	asyncio \
+	numpy \
+	arrow \
+	flask \
+	request \
+	darkskylib \
+	keras \
+	pandas \
+	matplotlib \
+	influxdb \
+	sklearn \
+	tensorflow \
+	h5py
+
+COPY . /predictor
+
+
+WORKDIR /predictor
+
+CMD ["python","main.py"]

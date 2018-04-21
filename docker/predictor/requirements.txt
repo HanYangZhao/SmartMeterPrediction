@@ -1,0 +1,9 @@
+darkskylib
+asyncio
+keras
+pandas
+numpy
+matplotlib
+sklearn
+influxdb
+tensorflow

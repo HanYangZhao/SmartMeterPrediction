@@ -1,0 +1,1 @@
+ docker build  -f Dockerfile.hydroqc -t hydro_docker:latest .
