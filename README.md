@@ -5,6 +5,8 @@ Tool to predicted home energy usages based on machine learning and smart meter d
 # SmartMeterPrediction - HydroQuebec
 Tool to predicted home energy usages based on machine learning and smart meter data
 
+![Demo](https://github.com/HanYangZhao/SmartMeterPrediction/blob/master/screenshot.png)
+
 # Getting Started
   * Go to the docker folder
   * Build the docker containers in the sub-folder
@@ -32,7 +34,7 @@ Tool to predicted home energy usages based on machine learning and smart meter d
   * Go to the `multi_linear_regression_hourly.py` and change `line 20` to point the new csv created
   * Run `multi_linear_regression_hourly.py`
   * Uses the temperature, hour of the day and is_workday to make predictions and train the network
-  
+  * ![DNN](https://github.com/HanYangZhao/SmartMeterPrediction/blob/master/results/hourly/dnn_3_layers_64_neurons_00_dropout.png)
  ## LSTM network
   * Download your house's hourly datasets from Hydro-Quebec
   * Put them all in the the `./training/data/hourly` folder
@@ -42,3 +44,5 @@ Tool to predicted home energy usages based on machine learning and smart meter d
   * You can adjust what parameters we want to use for training by changing `line 36` and the numbers of prediction hours in       `line 39 - line 41`
   * Uses the temperature, hour of the day previous predictions and is_workday to generate new predictions and train the network
   * NOTE: I've currently commented out in the LSTM prediction because it's not very accurate. To re-enable you need to remove the comments in `./predictor/main.py` and `./predictor/database.py`
+  * ![LSTM](https://github.com/HanYangZhao/SmartMeterPrediction/blob/master/results/hourly/lstm_6_layers_100_neurons_02_dropout.png)
+
